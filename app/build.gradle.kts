@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "com.ethan.skyinsight"
-    compileSdk = 34
+    compileSdk = (project.properties["COMPILE_SDK_VERSION"] as? String)?.toInt() ?: 34
 
     defaultConfig {
         applicationId = "com.ethan.skyinsight"
-        minSdk = 29
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = (project.properties["MIN_SDK_VERSION"] as? String)?.toInt() ?: 29
+        targetSdk = (project.properties["TARGET_SDK_VERSION"] as? String)?.toInt() ?: 34
+        versionCode = (project.properties["APP_VERSION_CODE"] as? String)?.toInt() ?: 1
+        versionName = project.properties["APP_VERSION_NAME"] as?  String ?: "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
